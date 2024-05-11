@@ -1,6 +1,6 @@
 import type { PlaceAndDistance } from "../../../types";
 import { DIGITRANSIT_API_KEY } from "$env/static/private";
-import { json } from '@sveltejs/kit';
+import { json } from "@sveltejs/kit";
 
 const query = `
     query nearestQuery(
@@ -50,10 +50,7 @@ const query = `
       }
   }`;
 
-const getPlaces = async (location: {
-  latitude: string;
-  longitude: string;
-}) => {
+const getPlaces = async (location: { latitude: string; longitude: string }) => {
   if (!location || !location.latitude || !location.longitude) return;
 
   const variables = {
@@ -77,8 +74,8 @@ const getPlaces = async (location: {
 };
 
 export async function GET({ url }) {
-  const lat = url.searchParams.get('lat') ?? '';
-  const lon = url.searchParams.get('lon') ?? '';
+  const lat = url.searchParams.get("lat") ?? "";
+  const lon = url.searchParams.get("lon") ?? "";
 
   return json(await getPlaces({ latitude: lat, longitude: lon }));
 }
