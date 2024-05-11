@@ -78,7 +78,7 @@ const getPlaces = async (location: {
 
 export async function GET({ url }) {
   const lat = url.searchParams.get('lat') ?? '';
-	const lon = url.searchParams.get('lon') ?? '';
+  const lon = url.searchParams.get('lon') ?? '';
 
   return json(await getPlaces({ latitude: lat, longitude: lon }));
 }
